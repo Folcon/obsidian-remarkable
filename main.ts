@@ -176,7 +176,8 @@ export default class MyPlugin extends Plugin {
     get editor(): Editor {
         const view = this.app.workspace.activeLeaf.view;
         try {
-            if (view.editMode.type == "source") {
+            if (('editMode' in view && view.editMode.type == "source") ||
+	        ('editor' in view)) {
                 return view.editor;
             }
 	    else {
